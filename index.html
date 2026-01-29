@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Salon Elegance</title>
+
+<style>
+html{
+  scroll-behavior:smooth;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Segoe UI, sans-serif;
+}
+
+body{background:#000}
+
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:60px;
+  background:#0f0f0f;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 40px;
+  z-index:10;
+}
+nav ul{
+  display:flex;
+  gap:24px;
+  list-style:none;
+}
+nav a{
+  color:#fff;
+  text-decoration:none;
+}
+
+/* SECTIONS – animation-safe */
+section{
+  min-height:100vh;
+  padding-top:60px;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+
+/* DEFAULT PAGE */
+#home{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+}
+
+/* TARGET ANIMATION */
+section:target{
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  animation:fadeIn .8s ease forwards;
+}
+
+/* FADE KEYFRAME */
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* BACKGROUNDS */
+.home{background:url("https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9") center/cover;}
+.services{background:url("https://images.unsplash.com/photo-1600948836101-f9ffda59d250") center/cover;}
+.about{background:url("https://images.unsplash.com/photo-1559599101-f09722fb4948") center/cover;}
+.contact{background:url("https://images.unsplash.com/photo-1504384308090-c894fdcc538d") center/cover;}
+
+/* OVERLAY */
+.overlay{
+  min-height:100vh;
+  background:rgba(0,0,0,.65);
+  color:#fff;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px;
+}
+
+h1{font-size:48px;margin-bottom:20px}
+p{max-width:700px;font-size:18px}
+
+/* SERVICES */
+.grid{
+  margin-top:50px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:30px;
+}
+
+.flip{
+  height:240px;
+  perspective:1000px;
+}
+.flip-inner{
+  height:100%;
+  transition:.7s;
+  transform-style:preserve-3d;
+}
+.flip:hover .flip-inner{
+  transform:rotateY(180deg);
+}
+.front,.back{
+  position:absolute;
+  width:100%;
+  height:100%;
+  border-radius:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  backface-visibility:hidden;
+  box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+.front{
+  background:#fff;
+  color:#000;
+  font-weight:600;
+}
+.back{
+  background:#111;
+  color:#fff;
+  transform:rotateY(180deg);
+  flex-direction:column;
+}
+.back span{
+  margin-top:10px;
+  font-size:22px;
+  color:#f5b7b1;
+}
+
+/* FORM */
+form{
+  background:#fff;
+  color:#000;
+  padding:30px;
+  border-radius:16px;
+  width:100%;
+  max-width:420px;
+  margin-top:30px;
+}
+form input, form select{
+  width:100%;
+  padding:12px;
+  margin-bottom:15px;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+form button{
+  width:100%;
+  padding:12px;
+  background:#0f0f0f;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* MAP */
+iframe{
+  width:90%;
+  height:280px;
+  border-radius:14px;
+  margin-top:20px;
+}
+
+/* WHATSAPP */
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:#fff;
+  padding:14px 18px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+  box-shadow:0 10px 20px rgba(0,0,0,.3);
+  z-index:20;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav>
+  <div>Salon Elegance</div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- WHATSAPP -->
+<a class="whatsapp" 
+   href="https://wa.me/919773487626" 
+   target="_blank">
+   WhatsApp Booking
+</a>
+
+<!-- HOME -->
+<section id="home" class="home">
+  <div class="overlay">
+    <h1>Salon Elegance</h1>
+    <p>Where beauty meets luxury. Experience professional care.</p>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services">
+  <div class="overlay">
+    <h1>Our Services</h1>
+    <div class="grid">
+      <div class="flip">
+        <div class="flip-inner">
+          <div class="front">Hair Cut</div>
+          <div class="back">Professional styling<span>₹499</span></div>
+        </div>
+      </div>
+      <div class="flip">
+        <div class="flip-inner">
+          <div class="front">Facial</div>
+          <div class="back">Glow treatment<span>₹899</span></div>
+        </div>
+      </div>
+      <div class="flip">
+        <div class="flip-inner">
+          <div class="front">Makeup</div>
+          <div class="back">Party & Bridal<span>₹1999</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="overlay">
+    <h1>About Us</h1>
+    <p>Serving premium beauty experiences since 2008.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="overlay">
+    <h1>Book Appointment</h1>
+    <p>📞 9773487626</p>
+
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <select required>
+        <option value="">Select Service</option>
+        <option>Hair Cut</option>
+        <option>Facial</option>
+        <option>Makeup</option>
+        <option>Spa</option>
+      </select>
+      <input type="date" required>
+      <button type="submit">Book Appointment</button>
+    </form>
+
+    <iframe src="https://maps.google.com/maps?q=india&z=13&output=embed"></iframe>
+  </div>
+</section>
+
+</body>
+</html>
